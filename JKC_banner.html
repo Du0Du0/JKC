@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+  <!-- 배너가 따라오게 하고싶으면
+  <script>
+    // 기본 위치(top)값
+    var floatPosition = parseInt($("#float-menu").css('top'))
+
+    // scroll 인식
+    $(window).scroll(function () {
+
+      // 현재 스크롤 위치
+      var currentTop = $(window).scrollTop();
+      var bannerTop = currentTop + floatPosition + "px";
+
+      //이동 애니메이션 숫자는 따라오는 속도 조절
+      $("#float-menu").stop().animate({
+        "top": bannerTop
+      }, 500);
+
+    }).scroll();
+    $(".target").css('top', bannerTop);
+  </script> -->
+
+
+  <style>
+    /* .banner-wrap {
+      position: relative;
+    } */
+
+    /* 위의 jquery를 사용해 움직이게 하고싶으면 fixed에서 absolute로 변경 */
+    #float-menu {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      z-index: 9999;
+
+    }
+
+    .banner-btn {
+      position: relative;
+      width: 50px;
+      height: 50px;
+    }
+
+    /* 감싸는 영역 border */
+    .banner-btn:nth-child(1) {
+      border: solid 1px rgb(189, 189, 189);
+    }
+
+    .banner-btn:nth-child(2),
+    .banner-btn:nth-child(3) {
+      border-left: solid 1px rgb(189, 189, 189);
+      border-right: solid 1px rgb(189, 189, 189);
+      border-bottom: solid 1px rgb(189, 189, 189);
+    }
+
+    /* 버튼 아이콘 중앙정렬 */
+    .banner-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 25px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="banner-wrap"></div>
+  <div id="float-menu">
+    <div class="banner-btn"><a href="JKC_MainPage.html"><img class="banner-img" src="home.png" alt="main"></a></div>
+    <div class="banner-btn"><a name=top href="javascript:window.scrollTo(0,0);" style="top:20px;right:50px;"><img
+          class="banner-img" src="top.png" alt="top"></a>
+    </div>
+    <div class="banner-btn"><a name=bottom href="javascript:window.scrollTo(0,10000);"
+        style="bottom:20px;right:50px;"><img class="banner-img" src="bottom.png" alt="bottom">
+      </a>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

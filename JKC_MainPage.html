@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="JKC_MainPageCss.css" rel="stylesheet">
+
+
+
+    <!-- 헤더 연결 -->
+    <script>
+        $(document).ready(function () {
+            $(".header").load("JKC_mainHeader.html")
+        }) </script>
+
+    <!-- 모든 페이지 적용: 한 페이지씩 이동하는 이벤트 -->
+    <script>
+        //    <!-- 기본 이벤트 제거: 휠을 굴렸을 때 스크롤이 되지 않도록 -->
+        window.addEventListener("wheel", function (e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // <!-- 참조하는 요소 미리 탐색 및 선언 -->
+
+        var $html = $("html");
+        // 뷰포트에 표시되는 페이지의 번호
+        var page = 1;
+        // 마지막 페이지의 번호
+        var lastPage = $("#section").length;
+        // 페이지가 로드되면 첫 페이지 시작
+        $html.animate({ scrollTop: 0 }, 10);
+
+        // 이벤트 핸들러로 마우스 휠을 굴리면 발생하는 이벤트
+        $(window).on("wheel", function (e) {
+            // 아래에서 호출된 .animate 메서드로 생성된 스크롤 효과가 쌓이지 않도록
+            // 스크롤이 진행되는 동안 발생하는 wheel 이벤트 무시
+            if ($html.is(":animated")) return;
+            // e(jquery가 반환) .originalEvent(자바스크립트 원래 이벤트)
+            // .deltaY(마우스 휠을 어느 방향으로 얼만큼 굴렸는지)-> 양수이면 아래쪽으로 굴린 것,
+            // 음수이면 위쪽으로 굴린 것
+            if (e.originalEvent.deltaY > 0) {
+                // 마지막 페이지인 경우 이벤트 핸들러 종료
+                if (page == lastPage) return;
+                // 스크롤 아래로 했을경우 페이지+1, 위로 올릴 경우 -1씩
+                page++;
+            } else if (e.originalEvent.deltaY < 0) {
+                if (page == 1) return;
+
+                page--;
+            }
+            // 이동할 페이지의 번호에 스크롤 할 위치 계산
+            var posTop = (page - 1) * $(window).height();
+            // 계산한 위치로 이동
+            $html.animate({ scrollTop: posTop });
+
+        });
+    </script>
+
+</head>
+
+
+
+<div class="header"></div>
+
+<body>
+
+    <section id="section1" style="margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: #FFB1A4;
+
+    display: flex;
+    align-items: center;
+    ">
+        <div class="blob">
+            <!-- This SVG is from https: //codepen.io/Ali_Farooq_/pen/gKOJqx -->
+            <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 310 350">
+                <path
+                    d="M156.4,339.5c31.8-2.5,59.4-26.8,80.2-48.5c28.3-29.5,40.5-47,56.1-85.1c14-34.3,20.7-75.6,2.3-111  c-18.1-34.8-55.7-58-90.4-72.3c-11.7-4.8-24.1-8.8-36.8-11.5l-0.9-0.9l-0.6,0.6c-27.7-5.8-56.6-6-82.4,3c-38.8,13.6-64,48.8-66.8,90.3c-3,43.9,17.8,88.3,33.7,128.8c5.3,13.5,10.4,27.1,14.9,40.9C77.5,309.9,111,343,156.4,339.5z" />
+            </svg>
+        </div>
+        <h1 style="color: white;
+    font-size: 20vmin;
+    line-height: 1;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Poppins',
+    sans-serif;
+    text-transform: uppercase;
+    padding-left: 40px;
+    ">JKC<br>CORPORATION</h1>
+    </section>
+    <section id="section2" style="
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;">
+
+
+    </section>
+
+    <section id="section2">
+        <div id="section5">
+            <h1 class="ys_typingtext"></h1>
+        </div>
+        <script>
+            const $ys_typingtext = document.querySelector(".ys_typingtext");
+
+            // 글자 모음 - 개행문자(\n)로 줄바꿈
+            const letters = [
+                "안녕하세요 \n JKC corporation 입니다",
+                "중요한 건 꺾이지 않는. . .",
+                "코딩!"
+            ];
+
+            // 글자 입력 속도
+            const speed = 100;
+            let i = 0;
+
+            // 줄바꿈을 위한 <br> 치환
+            const changeLineBreak = (letter) => {
+                return letter.map(ys_typingtext => ys_typingtext === "\n" ? "<br>" : ys_typingtext);
+            }
+
+            // 타이핑 효과
+            const typing = async () => {
+                // 기존코드에서 개행치환코드 추가
+                const letter = changeLineBreak(letters[i].split(""));
+
+                while (letter.length) {
+                    await wait(speed);
+                    $ys_typingtext.innerHTML += letter.shift();
+                }
+
+                // 잠시 대기
+                await wait(800);
+
+                // 지우는 효과
+                remove();
+            }
+
+            // 글자 지우는 효과
+            const remove = async () => {
+                // 기존코드에서 개행치환코드 추가
+                const letter = changeLineBreak(letters[i].split(""));
+
+                while (letter.length) {
+                    await wait(speed);
+
+                    letter.pop();
+                    $ys_typingtext.innerHTML = letter.join("");
+                }
+
+                // 다음 순서의 글자로 지정, 타이핑 함수 다시 실행
+                i = !letters[i + 1] ? 0 : i + 1;
+                typing();
+            }
+
+            // 딜레이 기능 ( 마이크로초 )
+            function wait(ms) {
+                return new Promise(res => setTimeout(res, ms))
+            }
+
+            // 초기 실행
+            setTimeout(typing, 1500);
+        </script>
+
+
+
+
+    </section>
+
+
+    <section id="section3">
+        <div class="P5ImgContainer">
+            <div id="P5ImgBox1"> <img src="김도현.jpg" style="width: 200px; height: 400px;">
+            </div>
+            <div id="P5ImgBox2"> <img src="임수진.jpg" style="width: 200px; height: 400px;">
+            </div>
+            <div id="P5ImgBox3"> <img src="최진용.jpg" style="width: 200px; height: 400px;">
+            </div>
+            <div id="P5ImgBox4"> <img src="장연서.jpg" style="width: 200px; height: 400px;">
+            </div>
+            <div id="P5ImgBox5"> <img src="김경돈.jpg" style="width: 200px; height: 400px;">
+            </div>
+        </div>
+        <span id="gdh1">
+        </span>
+    </section>
+
+
+    <section id="section4">
+
+        <div class="animatedParent">
+
+            <div class="animated bounceInUp first-duration" data-id="1">
+                <img src="메인1.jpg">
+            </div>
+
+            <div class="animated bounceInUp second-duration" data-id="2">
+                <img src="메인2.jpg">
+            </div>
+
+            <div class="animated bounceInUp third-duration" data-id="3">
+                <img src="메인3.jpg">
+            </div>
+
+            <div class="animated bounceInUp fourth-duration" data-id="4">
+                <img src="메인4.jpg">
+            </div>
+
+            <div class="animated bounceInUp fifth-duration" data-id="5">
+                <img src="메인5.jpg">
+            </div>
+
+            <div class="animated fadeInRight sixth-duration" data-id="6">JKC</div>
+
+            <div class="animated fadeInLeft seventh-duration" data-id="7">Members</div>
+
+        </div>
+
+        <!-- section3 애니메이션 css -->
+        <link rel="stylesheet" href="section4-animations.css">
+
+        <!-- section3 애니메이션 스크립트 -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="section4-animations.js"></script>
+
+
+
+    </section>
+
+
+
+    </section>
+    <section id="section5">
+        <!-- containert는 6개의 박스를 중심점을 기준으로 모아놓은상태로 회전하는 별모양의 배경 -->
+        <!-- 초기 목적 : 육각형으로 멈추지않고 회전하는 네비게이션 -->
+        <!-- 중심점에 모이면 자꾸 별모양으로 바뀜.. 포기하고 배경으로 탈바꿈 -->
+        <div class="containert">
+            <div class="triangle triangle-1"></div>
+            <div class="triangle triangle-2"></div>
+            <div class="triangle triangle-3"></div>
+            <div class="triangle triangle-4"></div>
+            <div class="triangle triangle-5"></div>
+            <div class="triangle triangle-6"></div>
+        </div>
+        <div class="containert1">
+            <div class="triangle triangle-1"></div>
+            <div class="triangle triangle-2"></div>
+            <div class="triangle triangle-3"></div>
+            <div class="triangle triangle-4"></div>
+            <div class="triangle triangle-5"></div>
+            <div class="triangle triangle-6"></div>
+        </div>
+        <div class="containert2">
+            <div class="triangle triangle-1"></div>
+            <div class="triangle triangle-2"></div>
+            <div class="triangle triangle-3"></div>
+            <div class="triangle triangle-4"></div>
+            <div class="triangle triangle-5"></div>
+            <div class="triangle triangle-6"></div>
+        </div>
+        <div class="containert3">
+            <div class="triangle triangle-1"></div>
+            <div class="triangle triangle-2"></div>
+            <div class="triangle triangle-3"></div>
+            <div class="triangle triangle-4"></div>
+            <div class="triangle triangle-5"></div>
+            <div class="triangle triangle-6"></div>
+        </div>
+        <div class="containert4">
+            <div class="triangle triangle-1"></div>
+            <div class="triangle triangle-2"></div>
+            <div class="triangle triangle-3"></div>
+            <div class="triangle triangle-4"></div>
+            <div class="triangle triangle-5"></div>
+            <div class="triangle triangle-6"></div>
+        </div>
+
+
+        <script>
+            // 해당 위치에 스크롤이 도착하면 애니메이션을 실행시키려고 했으나
+            // 능력 부족으로 구현하지 못함.
+            // on()으로 이벤트 연결!
+            $(document).ready(function () {
+                $('#kboxa').css({
+                    // 박스 크기,높이, 선명도
+                    width: 100, height: 50, opacity: 0.5,
+                    backgroundColor: 'red',
+                }).animate({
+                    //크기는 가로만 변경, 약간흐릿하게
+                    width: 600, opacity: 0.5,
+                }, 5000) //animate 진행 시간
+                // on()으로 이벤트 연결 
+                $("#kboxa").on('click', function () {
+                    $(location).attr("href", "JKC_1_AboutUs.html")
+                })
+            })
+
+            $(document).ready(function () {
+                $('#kboxa1').css({
+                    width: 100, height: 50,
+                    backgroundColor: 'green',
+                }).animate({
+                    width: 600, opacity: 0.5,
+                }, 3000)
+
+                $("#kboxa1").on('click', function () {
+                    $(location).attr("href", "JKC_2_portfolio.html")
+                })
+            })
+
+
+            $(document).ready(function () {
+                $('#kboxa2').css({
+                    width: 100, height: 50,
+                    backgroundColor: 'blue',
+                }).animate({
+                    width: 600, opacity: 0.5,
+                }, 1000)
+
+                $("#kboxa2").on('click', function () {
+                    $(location).attr("href", "JKC_3_memory.html")
+                })
+
+            })
+
+            $(document).ready(function () {
+                $('#kboxa3').css({
+                    width: 100, height: 50,
+                    backgroundColor: 'purple',
+                }).animate({
+                    width: 600, opacity: 0.5,
+                }, 8000)
+
+                $("#kboxa3").on('click', function () {
+                    $(location).attr("href", "JKC_4_qna.html")
+                })
+
+            })
+
+            $(document).ready(function () {
+                $('#kboxa4').css({
+                    width: 100, height: 50,
+                    backgroundColor: 'pink',
+                }).animate({
+                    width: 600, opacity: 0.5,
+                }, 1000)
+                $("#kboxa4").on('click', function () {
+                    $(location).attr("href", "JKC_5_contact.html")
+                })
+
+            })
+
+        </script>
+
+
+        <div class="kbox_container">
+            <div id="kboxa">About Us</div>
+            <div id="kboxa1">Portfolio</div>
+            <div id="kboxa2">Memory</div>
+            <div id="kboxa3">Q&A</div>
+            <div id="kboxa4">Contact</div>
+        </div>
+
+
+    </section>
+
+</body>
+
+</html>

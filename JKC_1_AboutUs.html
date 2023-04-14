@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JKC-About Us</title>
+  <link rel="stylesheet" href="jkc_1_aboutus.css">
+  <link rel="stylesheet" href="   https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <!-- 공통부분 -->
+  <script>
+    $(document).ready(function () {
+      $(".header").load("jkc_header.html")
+    })
+    $(document).ready(function () {
+      $(".footer").load("jkc_footer.html")
+    })
+    $(document).ready(function () {
+      $(".banner").load("jkc_banner.html")
+    })
+  </script>
+
+  <script>
+
+    $(document).ready(function () {
+      // <!-- 박스 늘어나는 애니메이션 -->
+      $('#ys_bar1').css({
+        width: 10,
+      }).animate({
+        width: 80
+      }, 500);
+      $('#ys_bar2').css({
+        width: 10,
+      }).animate({
+        width: 200
+      }, 500);
+
+      // 파이 그래프 애니메이션
+      var i = 1;
+      var func1 = setInterval(function () {
+        if (i < 15) {
+          color1(i);
+          i++;
+        } else if (i < 66) {
+          color2(i);
+          i++;
+        } else if (i < 125) {
+          color3(i);
+          i++;
+        } else {
+          clearInterval(func1);
+        }
+      }, 10);
+    }
+    )
+
+
+    // 파이 그래프 색 변경    
+    function color1(i) {
+      $("#ys_pie").css({
+        "background": "conic-gradient(#8b22ff 0% " + i + "%, #ffffff " + i + "% 100%)"
+      });
+
+    }
+    function color2(i) {
+      $("#ys_pie").css({
+        "background": "conic-gradient(#8b22ff 0% 25%, #ffc33b 25% " + i + "%, #ffffff " + i + "% 100%)"
+      });
+
+    }
+    function color3(i) {
+      $("#ys_pie").css({
+        "background": "conic-gradient(#8b22ff 0% 25%, #ffc33b 25% 70%, #21f3d6 70% " + i + "%, #ffffff " + i + "% 100%)"
+      });
+
+    }
+  </script>
+  <!-- 서비스 건수 카운터 -->
+  <script>
+    const counter = ($counter, max) => {
+      let now = max;
+      const handle = setInterval(() => {
+        $counter.innerHTML = Math.ceil(max - now);
+        if (now < 1) {
+          clearInterval(handle);
+        }
+        const step = now / 10;
+        now -= step;
+      }, 50);
+    }
+
+    window.onload = () => {
+      const $counter1 = document.querySelector("#ys_box1");
+      const max1 = 716;
+      setTimeout(() => counter($counter1, max1), 2000);
+      const $counter2 = document.querySelector("#ys_box2");
+      const max2 = 1580;
+      setTimeout(() => counter($counter2, max2), 2000);
+      const $counter3 = document.querySelector("#ys_box3");
+      const max3 = 974;
+      setTimeout(() => counter($counter3, max3), 2000);
+    }
+  </script>
+
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="header">
+    </div>
+    <div class="ys_container">
+      <div class="section-wrap">
+        <!-- title : nbsp 주는거 조금 없어보일지도..? 간격 조정 다시-->
+        <div class="section-head">About Us
+          <p class="section-subtitle"><a class="section-head-title" href="JKC_AboutUs.html">개요</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="section-head-title" href="#about-member">멤버</a>
+          </p>
+        </div>
+        <div class="main-section">
+          <!-- 타이핑 효과 -->
+          <div class="ys_typing-text">
+            <p id="ys_dynamic" class="ys_lg-text">
+              <!-- <p id="dynamic" class="lg-text active"> 이렇게 하면 커서 사라짐, 이건 js로 처리 -->
+            </p>
+          </div>
+
+          <!-- 페이지 시작 이미지와 회사 소개 문구 -->
+          <div class="ys_middle-box">
+            <!-- 첫번째 이미지 -->
+            <img class="ys_image1" src="coding1.jpg" alt="img">
+            <!-- 첫번째 회사 설명 -->
+            <div class="ys_art1">
+              <p id="ys_p1">
+                <b>JKC corporation의 고객 맞춤 서비스 혜택
+                  <br><br>
+                  프론트앤드부터 백앤드까지, JKC corporation은 서비스와 기술을 통해 인류에 살기 좋은 환경을 만들어 갑니다.
+                  <br><br>
+                  시스템 오류 및 오탈자 / 지속적인 최적화 모니터링
+                  <br><br>
+                  홈페이지 방문자 접속 분석 및 회원가입, 문자 서비스 지원
+                  <br><br>
+                  웹 에이전시의 기본업무를 충실히 수행하며, 풍부한 경험지식으로 고객님의 성공의 발판이 되겠습니다.</b>
+              </p>
+            </div>
+            <!-- 두변째 이미지 -->
+            <img class="ys_image2" src="coding2.jpg" alt="img">
+            <!-- 두번째 회사설명 -->
+            <div class="ys_art2">
+              <p id="ys_p2">
+                <br><br><br>
+                <b>
+                  홈페이지 제작 및 DB 관리, 서버 유지 보수까지 함께하세요.
+                  <br><br>
+                  고객님만을 위한 시각적, 공간적 분석을 통해 기업의 아이덴티티를 만들어드리겠습니다.
+                  <br><br>
+                  당신의 아이디어를 현실화하는 통찰력과 미래를 만드는 기술력으로 상상 그 이상의 가치의 모바일 어플리케이션을 제공해 드리겠습니다.
+                  <br><br>
+                  마케팅분석과 사용자 경험의 아이디어 제공하여
+                  매출 시너지를 창출합니다.
+                  <br><br>
+                </b>
+              </p>
+            </div>
+          </div>
+
+
+          <!-- 서비스 건수를 보여줄 아이콘 3개 -->
+          <div class="ys_service-icon">
+            <div class="ys_box">
+              <img src="html.png" class="ys_icon1" alt="img">
+            </div>
+            <div class="ys_box">
+              <img src="db.png" class="ys_icon2" alt="img">
+            </div>
+            <div class="ys_box">
+              <img src="server.png" class="ys_icon3" alt="img">
+            </div>
+          </div>
+          <!-- 카운트가 시작될 숫자 -->
+          <div class="ys_service-count">
+            <div class="ys_count-box">
+              <div id="ys_box1">0</div>
+            </div>
+            <div class="ys_count-box">
+              <div id="ys_box2">0</div>
+            </div>
+            <div class="ys_count-box">
+              <div id="ys_box3">0</div>
+            </div>
+          </div>
+          <!-- we grow up 성장과정 -->
+          <div class="ys_grow">
+            <h1 class="ys_grow-top">We grow up!</h1>
+            <div class="ys_grow-middle">
+              <div class="ys_grow-middle2">
+                <h1>2023년 현황</h1>
+                <div id="ys_bar1"></div>
+                <div id="ys_bar2"></div>
+              </div>
+              <div class="ys_grow-middle3">
+                <h1>점유율</h1>
+                <div id="ys_pie">
+                </div>
+              </div>
+            </div>
+            <div class="ys_grow-bottom" id="about-member">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 멤버 소개 -->
+
+    <div id="section2">
+      <div id="section2-wrap">
+        <div class="waviy">
+          <span>Introduce </span>
+          <!-- 변수 i에 값을 할당, stylesheet에서 변수를 가져다 씀 -->
+          <span style="--i:1">J</span>
+          <span style="--i:2">K</span>
+          <span style="--i:3">C</span>
+          <span style="--i:4">Team</span>
+        </div>
+        <div class="box-wrap">
+          <div class="box">
+            <div class="img">
+              <img src="m-ys.jpg" width="400px" height="250px" alt="Hover Effect">
+            </div>
+            <div class="info">
+              <h3>Jang Yeonseo</h3>
+              <p class="i-text">E-mail: ohohooh@naver.com</p>
+              <p class="i-text">"코딩으로 인생 역전"</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img">
+              <img src="m-kd.png" width="400px" height="250px" alt="Hover Effect">
+            </div>
+            <div class="info">
+              <h3>Kim Gyungdon</h3>
+              <p class="i-text">E-mail: doni3134@naver.com</p>
+              <p class="i-text">"내 자리에서는 잘 돌아갔는데.."</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img">
+              <img src="m-dh.jpg" width="400px" height="250px" alt="Hover Effect">
+            </div>
+            <div class="info">
+              <h3>Kim Dohyun</h3>
+              <p class="i-text">E-mail: dohyun911@hanmail.net</p>
+              <p class="i-text">"빡코딩!!!!!!!!!!!!!"</p>
+            </div>
+          </div>
+          <div class="section-2-btm">
+            <div class="box">
+              <div class="img">
+                <img src="m-sj.PNG" width="400px" height="250px" alt="Hover Effect">
+              </div>
+              <div class="info">
+                <h3>Lim Sujin</h3>
+                <p class="i-text">E-mail: lsj3369@gmail.com</p>
+                <p class="i-text">"늦었다고 생각할 때가 가장 빠르다"</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="img">
+                <img src="m-jy.jpg" width="400px" height="250px" alt="Hover Effect">
+              </div>
+              <div class="info">
+                <h3>Choi Jinyong</h3>
+                <p class="i-text">E-mail: bamharu3@gmail.com</p>
+                <p class="i-text">"센스는 갈고 닦는 것"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let observer = new IntersectionObserver((e) => {
+      e.forEach((박스) => {
+        if (박스.isIntersecting) {
+          박스.target.style.opacity = 1;
+        } else {
+          박스.target.style.opacity = 0;
+        }
+      })
+    })
+    let div = document.querySelectorAll('.ys_image1')
+    observer.observe(div[0])
+    div = document.querySelectorAll('#ys_p1')
+    observer.observe(div[0])
+    div = document.querySelectorAll('.ys_image2')
+    observer.observe(div[0])
+    div = document.querySelectorAll('#ys_p2')
+    observer.observe(div[0])
+
+
+
+  </script>
+  <script>
+    let target = document.querySelector("#ys_dynamic");
+    // 다이나믹이라는 아이디 속성값을 갖고 있는 문서 객체를 선택해라
+
+
+    function resetTyping() {
+      target.textContent = "";
+      ys_dynamic(ys_repeat());
+      // 3초 뒤에 사라지게함
+    }
+    var i = 2;
+    function ys_repeat() {
+      let stringArr = ["중요한 건", "꺾이지 않는", "코딩"];
+      // 문자열을 배열값으로 구성
+      let selectString1 = stringArr[0].split("");
+      let selectString2 = stringArr[1].split("");
+      let selectString3 = stringArr[2].split("");
+      let arr = [selectString1, selectString2, selectString3]
+      if (i >= 2) {
+        i = 0;
+        $(function () {
+          $(".ys_typing-text").css({
+            "color": "black"
+          });
+        })
+      } else if (i == 1) {
+        $(".ys_typing-text").css({
+          "color": "red"
+        });
+        $("#ys_dynamic::after").css({
+          "background-color": "red"
+        });
+        i += 1;
+      } else {
+        i += 1;
+      }
+      return arr[i];
+    }
+
+    function ys_dynamic(splitArr) {
+      if (splitArr.length > 0) {
+        target.textContent += splitArr.shift();
+        // 배열이 남아 있으면 앞에서부터 하나 뺀다
+        setTimeout(function () {
+          ys_dynamic(splitArr);
+        }, 80);
+        // 0.08초 간격으로 다이나믹 함수를 호출
+      } else {
+        setTimeout(resetTyping, 1000);
+        // 1초후에 리셋타이핑 함수를 불러온다
+      }
+    }
+    // 한글자씩 텍스트 출력 함수
+    ys_dynamic(ys_repeat());
+    function ys_blink() {
+      target.classList.toggle("active");
+      // 액티브라는 클래스 요소가 추가됐다 삭제됐다 반복
+    }
+    setInterval(ys_blink, 500);
+// 블링크라는 함수를 0.5초마다 반복해라
+  </script>
+  <div class="container"></div>
+  <div class="footer"></div>
+  <div class="banner"></div>
+
+</body>
+
+</html>s

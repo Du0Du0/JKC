@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JKC-Portfolio</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
+  <!-- 공통 부분 연결 -->
+  <script> $(document).ready(function () {
+      $(".header").load("jkc_header.html")
+    })
+    $(document).ready(function () {
+      $(".footer").load("jkc_footer.html")
+    })
+    $(document).ready(function () {
+      $(".banner").load("jkc_banner.html")
+    })
+  </script>
+
+  <style>
+    /* 공통 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "NanumSquare", bold;
+      margin: 0 auto;
+    }
+
+
+    .section {
+
+      height: auto;
+      min-height: 100%;
+      margin-top: 200px;
+      padding-bottom: 200px;
+
+    }
+
+    .service-section {
+
+      margin: 0 auto;
+      margin-top: 100px;
+      z-index: 1;
+    }
+
+    /* 서비스 타이틀 */
+    .service-title {
+      font-size: 30px;
+      padding-left: 300px;
+      border-bottom: rgb(97, 21, 121) solid 2px;
+    }
+
+    .service-head-title {
+      font-size: 60px;
+      font-weight: bold;
+    }
+
+
+    /* 서비스 프론트 타이틀 */
+    .service-front-title {
+      font-size: 80px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* 서비스 백 타이틀 */
+    .service-back-title {
+      font-size: 80px;
+      text-align: center;
+      margin-top: 150px;
+    }
+
+    /* 서비스 부제 타이틀 */
+    .service-sub-title {
+      font-size: 12px;
+      text-align: center;
+      margin-top: 0px;
+      margin-bottom: 60px;
+    }
+
+    /* 상품 대표 이미지 컨테이너(前html이미지커네이너라서 ~-h) */
+    .container-h {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
+    .image-h {
+      display: block;
+      width: 600px;
+      height: 600px;
+      transition: 0.5s ease;
+      margin: auto;
+    }
+
+    .overlay-h {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 600px;
+      height: 600px;
+      opacity: 0;
+      transition: 0.5s ease;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .container-h:hover .image-h {
+      opacity: 0.5;
+    }
+
+    .container-h:hover .overlay-h {
+      opacity: 1;
+      background-image: url(front1.png);
+      /* hover시 교체할 이미지 경로 , 단 글씨로 넣고 싶으땐 빼고 쓰면 됨*/
+    }
+
+    /* .text-h {
+        color: white;
+        font-size: 2em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      } */
+
+    /* 상품설명 텍스트 */
+    .service-ex {
+      font-size: 20px;
+      text-align: center;
+      margin: 60px 300px 60px 300px;
+    }
+  </style>
+
+
+  <!-- 갤러리 슬라이더 스타일-->
+  <style>
+    .container-service-slider {
+      display: flex;
+      justify-content: center;
+    }
+
+    .service-slider {
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 auto;
+      z-index: 1;
+    }
+  </style>
+
+  <!-- 갤러리 슬라이더 스크립트 -->
+  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script>
+    $(document).ready(function () {
+      $('.service-slider').bxSlider({
+        auto: true,
+        pause: 10000,
+        autoHover: true,
+        minSlides: 4,
+        maxSlides: 4,
+        slideWidth: 300,
+        slideMargin: 10,
+        captions: true,
+        infiniteLoop: true,
+        responsive: false,
+        shrinkItems: true,
+      });
+    });
+  </script>
+
+</head>
+
+
+
+<body>
+  <div class="wrapper">
+    <!-- 헤더  -->
+    <div class="header"></div>
+    <div class="section">
+      <div class="service-wrap">
+        <!-- 서비스 타이틀 -->
+        <div class="service-title">Portfolio
+          <p class="service-head-title">포트폴리오</p>
+        </div>
+        <div class="service-section">
+
+
+          <!-- 첫번째 단락 타이틀-->
+          <div id="service-front-title" class="service-front-title">Front</div>
+          <div class="service-sub-title">HTML,CSS,JS</div>
+
+          <!-- 첫번째 단락 대표 이미지 -->
+          <div class="container-h">
+            <img src="front.jpg" alt="이미지" width="100" height="100" class="image-h">
+            <div class="overlay-h"></div>
+          </div>
+
+          <!-- 첫번째 단락 설명 -->
+          <div class="service-ex">Will you still love me when I'm no longer young and beautiful?
+            Will you still love me when I got nothing but my aching soul?
+            I know you will, I know you will, I know that you will
+            Will you still love me when I'm no longer beautiful?</div>
+
+          <!-- 첫번째 단락 부가 이미지 -->
+          <div class="container-service-slider">
+            <div class="service-slider">
+              <div><img src="코드1.jpg" alt="" title="yeah"></div>
+              <div><img src="코드2.jpg" alt="" title="you"></div>
+              <div><img src="코드3.jpg" alt="" title="do"></div>
+              <div><img src="코드4.jpg" alt="" title="why"></div>
+              <div><img src="코드5.jpg" alt="" title="meow"></div>
+              <div><img src="코드6.jpg" alt="" title="yeah"></div>
+            </div>
+          </div>
+
+          <!-- 두번째 단락 -->
+          <div id="service-back-title" class="service-back-title">Back</div>
+          <div class="service-sub-title">ORACLE</div>
+
+          <!-- 두번째 단락 대표 이미지 -->
+          <div class="container-h">
+            <img src="back.jpg" alt="이미지" width="100" height="100" class="image-h">
+            <div class="overlay-h"></div>
+          </div>
+
+          <!-- 두번째 단락 설명 -->
+          <div class="service-ex">Will you still love me when I'm no longer young and beautiful?
+            Will you still love me when I got nothing but my aching soul?
+            I know you will, I know you will, I know that you will
+            Will you still love me when I'm no longer beautiful?</div>
+
+
+          <!-- 두번째 단락 부가 이미지     -->
+          <div class="container-service-slider">
+            <div class="service-slider">
+
+              <div><img src="코드7.jpg" alt="" title="you"></div>
+              <div><img src="코드8.jpg" alt="" title="do"></div>
+              <div><img src="코드9.jpg" alt="" title="why"></div>
+              <div><img src="코드10.jpg" alt="" title="meow"></div>
+              <div><img src="코드11.jpg" alt="" title="meow"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+  <div class="banner"></div>
+</body>
+
+</html>

@@ -1,0 +1,395 @@
+/* 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "NanumSquare", bold;
+  margin: 0 auto;
+}
+
+/* 제목,푸터와의 거리 200씩 줌 */
+.ys_container {
+  height: auto;
+  min-height: 100%;
+  margin-top: 200px;
+  padding-bottom: 200px;
+}
+/* title명 */
+/* padding bottom은 그냥 맞출려고 임의로 준 값. 다시 지움 설정 같게 하는 방법을 알아봐야함 */
+.section-head {
+  font-size: 30px;
+  padding-left: 300px;
+  border-bottom: rgb(97, 21, 121) solid 2px;
+}
+.section-head-title {
+  text-decoration: none;
+  color: black;
+}
+.section-subtitle {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.section-head-title:hover {
+  color: black;
+}
+
+.main-section {
+  margin: 0 auto;
+  margin-top: 100px;
+  z-index: 1;
+}
+
+/* 이 부분 높이 수정? top하고 margin top 값을 왜 따로 줬는지?*/
+/* 배경 색깔 주는 곳 */
+
+.ys_intro-menu {
+  list-style: none;
+  text-decoration: none;
+}
+
+.ys_li {
+  float: left;
+  text-decoration: none;
+  list-style: none;
+}
+
+.ys_a {
+  text-decoration-line: none;
+  color: black;
+}
+
+/* 여기부터 클래스명 수정 */
+
+.ys_li {
+  padding-left: 30px;
+  /* 여기서 패딩값 주면 박스 자체가 떨어짐 */
+}
+
+.ys_a {
+  font-size: 30px;
+  padding-right: 20px;
+  text-align: center;
+  padding-left: 20px;
+  /* 여기서 패딩 값 주면 박스 안 글자가 떨어짐 */
+}
+
+.ys_line-box {
+  margin-top: 70px;
+  border: 1px solid black;
+}
+
+/* 여기까지가 메뉴들 */
+
+.ys_typing-text {
+  margin-top: 200px;
+  color: black;
+  /* 기본 색상은 블랙인데 js로 특정 시점에 레드로 변경 가능 */
+  text-align: center;
+  /* 이거능 여러줄 있을때만 보이겠지 */
+  margin-bottom: 300px;
+}
+
+.ys_lg-text {
+  font-size: 3rem;
+  /* 이거 무슨 배수 크기 */
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  /* 인라인 블록을 줘야 문구 길이가 유동적 */
+}
+
+#ys_dynamic::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -10px;
+  /* 커서 옆 약간의 여유 공간 */
+  width: 4px;
+  height: 100%;
+  background-color: black;
+}
+
+/* 마우스 커서 깜빡임 after라는 가상요소 만들기*/
+#ys_dynamic.active::after {
+  display: none;
+}
+
+/* 여기까지 중요한건꺾이지않는코딩 타이핑효과 */
+.ys_middle-box {
+  margin: 100px 200px;
+}
+
+.ys_image1 {
+  width: 600px;
+  height: 500px;
+  float: left;
+  margin-right: 150px;
+  opacity: 0;
+}
+
+.ys_image2 {
+  width: 600px;
+  height: 500px;
+  float: right;
+  margin-top: -50px;
+  opacity: 0;
+  margin-left: 150px;
+}
+
+.ys_art1 {
+  padding-top: 50px;
+  margin-bottom: 300px;
+}
+
+.ys_art2 {
+  margin-bottom: 300px;
+  margin-bottom: 300px;
+}
+
+/* 여기까지 중간 사진이랑 소개글 */
+
+.ys_service-icon {
+  text-align: center;
+}
+
+.ys_service-count {
+  text-align: center;
+}
+
+.ys_box {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  display: inline-block;
+  background-color: lightgray;
+  margin: 50px 50px;
+  line-height: 300px;
+  padding-top: 20px;
+}
+
+.ys_count-box {
+  display: inline-block;
+  width: 300px;
+  height: 70px;
+  border-radius: 30px;
+  background-color: rgb(233, 231, 231);
+  border: 2px solid lightgray;
+  color: black;
+  margin: 30px 50px;
+  line-height: 70px;
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 400px;
+}
+
+.ys_icon1 {
+  width: 250px;
+  height: 250px;
+}
+
+.ys_icon2 {
+  width: 250px;
+  height: 250px;
+}
+
+.ys_icon3 {
+  width: 250px;
+  height: 250px;
+}
+
+/* 여기까지 고객 서비스 건수 */
+.ys_grow-top {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 100px;
+}
+
+.ys_grow-middle {
+  text-align: center;
+}
+
+.ys_grow-middle1 {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+}
+
+.ys_grow-middle1 h1 {
+  top: 200px;
+  position: relative;
+}
+
+.ys_grow-middle2 {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  flex-direction: column-reverse;
+  position: relative;
+}
+
+.ys_grow-middle3 {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  position: relative;
+}
+
+.ys_grow-middle4 {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  background-color: white;
+}
+
+#ys_bar1 {
+  margin-top: 50px;
+  top: 70px;
+  height: 70px;
+  background-color: lightgray;
+  position: absolute;
+}
+
+#ys_bar2 {
+  margin-top: 50px;
+  top: 150px;
+  background-color: red;
+  height: 70px;
+  position: absolute;
+}
+
+#ys_bt1 {
+  font-weight: 200;
+  top: 100px;
+}
+#ys_bt2 {
+  font-weight: 200;
+  top: 180px;
+}
+
+#ys_pie {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 50px;
+  display: inline-block;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.ys_grow-bottom {
+  margin: 200px 200px;
+}
+
+#ys_p1 {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+#ys_p2 {
+  margin-top: 100px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+/* member */
+
+.waviy {
+  position: relative;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.waviy span {
+  position: relative;
+  display: inline-block;
+  color: #000000;
+  animation: waviy 1s;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes waviy {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-20px);
+  }
+}
+
+.box-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  margin-bottom: 200px;
+  /* 3개/2개로 나누고 싶어서 width 줬는데 주니까 반응형이 안 됨 어쩔 수 없지 */
+  /* width: 1500px; */
+}
+
+.box {
+  position: relative;
+  width: 400px;
+  height: 269px;
+  border: 10px solid rgb(180, 19, 118);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  margin: 50px;
+}
+
+.box img {
+  width: 100%;
+}
+
+.box .info {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.box:hover .info {
+  opacity: 1;
+}
+
+.box .info h3 {
+  font-size: 24px;
+  padding-bottom: 0.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.box .info p {
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.section2 {
+  display: flex;
+  justify-content: center;
+}
+.section-2-btm {
+  display: flex;
+  justify-content: center;
+}

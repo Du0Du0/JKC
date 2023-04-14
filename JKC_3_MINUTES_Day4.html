@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JKC-Day4</title>
+
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link href="JKC_3_activity.css" rel="stylesheet">
+
+  <!-- 공통 부분 연결 -->
+  <script>
+    $(document).ready(function () {
+      $(".header").load("jkc_header.html")
+    })
+    $(document).ready(function () {
+      $(".footer").load("jkc_footer.html")
+    })
+    $(document).ready(function () {
+      $(".banner").load("jkc_banner.html")
+    })
+  </script>
+</head>
+<style>
+  .day-wrapper {
+
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    z-index: 1;
+  }
+
+  .day-img {
+    border: 10px solid rgb(97, 21, 121);
+    float: left;
+    margin-right: 100px;
+    width: 550px;
+  }
+
+  .day-cont {
+    margin: 10px;
+  }
+
+  h5 {
+    margin-top: 20px;
+  }
+</style>
+
+
+<body>
+  <div>
+    <div class="header"></div>
+    <div class="news-wrapper">
+      <div class="newsbox">Minutes
+        <p class="newsbox-title">회의록-Day4(0330)</p>
+      </div>
+      <div class="day-wrapper">
+        <div><img class="day-img" src="0330.png" alt="회의사진"></div>
+        <div class="day-cont">
+          <p class="day-text">장소: SVS IT Academy 301호</p>
+          <p class="day-text">일시: 2023년 3월 30일 목요일 오전 9시 40분~10시, 오후 4시 50분~5시 18분</p><br>
+          <h5><b>1. 개인 프로젝트 진행사항 체크 및 문제점 공유</b></h5>
+          <h5><b>2. 개인 페이지 호환성 검사</b></h5>
+          <p class="day-text">&nbsp;&nbsp; : 코드 정리 및 주석 추가</p>
+          <h5><b>3. 공통 디자인 논의</b></h5>
+          <p class="day-text">&nbsp;&nbsp; : 각 페이지에 공통부분 적용, 최종 수정 및 마무리</p>
+          <h5><b>4. CSS/HTML 파일 분할</b></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"></div>
+  <div class="banner"></div>
+
+
+</body>
+
+</html>

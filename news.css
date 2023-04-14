@@ -1,0 +1,857 @@
+.gdcontainer {
+  /* 중앙 정렬 */
+  /* 컨테이너를 부모로 만듦 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: auto;
+  margin: 100px auto 0;
+  /* 가로로 정렬하다가 넓이를 침범하면 다음 줄에서 정렬됨 좌->우 */
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* 네비게이션 뒤로 와야하기 때문에 z-index를 낮은값을줌 */
+  z-index: 1;
+
+}
+
+.printBOX{
+text-align: center;
+
+}
+
+.newsbox-title{
+  margin-top: 150px;
+  font-size: 60px;
+}
+
+.newsbox {
+  z-index: 9999;
+  font-size: 30px;
+}
+
+.printBOX {
+  z-index: 9999;
+  font-size: 50px;
+  margin: 200px;
+  opacity: 0.1;
+
+}
+
+
+
+
+.flip-box {
+  width: 250px;
+  height: 400px;
+  float: left;
+  /* box의 시작. 좌로정렬 */
+  margin: 60px;
+  /* perspective는 3D를 위한 속성임(원근감 조절해서 맞추기) */
+  perspective: 1000px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* 뒤집히면 나오는 부분 */
+/* 3D효과 사용시 transform-style을 preserve-3d로 지정해야 사용가능 */
+/* 애니메이션 효과를 위해 transform:rotateY(0deg)로 미리 지정 */
+.flip,
+.flip2,
+.flip3,
+.flip4,
+.flip5,
+.flip6,
+.flip7 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  line-height: 400px;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  /* 카드가 뒤집히는 시간 */
+  transition: 1.5s;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.flip_a{
+  font-size: 28px;
+  text-decoration: none;
+}
+.flip_a:hover{
+  color: black;
+}
+
+
+#section-head {
+  
+margin-top: 200px;
+  font-size: 30px;
+  padding-left: 300px;
+  border-bottom: rgb(97, 21, 121) solid 2px;
+}
+
+.section-head-title {
+  margin-top: 5px;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* 히든으로 지정해야 뒷면이 안보임 */
+  backface-visibility: hidden;
+  border-radius: 20px 20px 20px 20px;
+  z-index: 5;
+
+}
+/* flip-box 수정할때 앞 뒤인지 확인하려면 front, back값에 아무 값이나 넣고 확인해야함 */
+.front {
+
+} 
+
+.back {
+  background-image: url("카드뒷면.jpg");
+  transform: rotateY(180deg);
+  z-index: 5;
+}
+
+
+.printBOX {
+  z-index: 9999;
+  font-size: 50px;
+  margin: 200px;
+  opacity: 0.1;
+
+}
+
+/* 호버시 돌려주기 */
+/* 1은 생략, 1 .2 .3 ... */
+.flip-box:hover .flip {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip2 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip3 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip4 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip5 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip6 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip7 {
+  transform: rotateY(180deg);
+}
+.flip-box:hover .flip8 {
+  transform: rotateY(180deg);
+}
+
+img {
+  border-radius: 20px 20px 20px 20px;
+  width: 300px;
+  height: 400px;
+
+}
+
+/* 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: 'NanumSquare', bold;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: cornsilk;
+}
+
+
+/* 네비게이션 */
+.header-wrap {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  z-index: 999;
+}
+
+/* 네비게이션 왼쪽 상단 로고*/
+.nav-title {
+  float: left;
+  color: rgb(0, 0, 0);
+  text-align: left;
+  margin-top: 1px;
+  margin-left: 30px;
+  text-decoration: none;
+  font-size: 23px;
+  text-align: left;
+  font-size: 20px;
+  position: absolute;
+  font-weight: 900;
+}
+
+/* 네비게이션  햄버거메뉴*/
+.drawer-icon {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  align-items: center;
+  margin: 0 auto;
+  left: 50%;
+  margin-left: -25px;
+  top: 5px;
+  z-index: 500;
+}
+
+/* 네비게이션  한영 전환 버튼*/
+.form-select {
+  position: absolute;
+  right: 100px;
+  align-items: right;
+  top: 20px;
+  width: 90px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 네비게이션  검색 아이콘*/
+.search-icon {
+  position: absolute;
+  right: 50px;
+  align-items: right;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+/* 상단 숨겨진 메뉴 카테고리*/
+/* 네비게이션이 하나가 아니라 두개가 하나처럼 움직임 */
+/* 펼쳤을때 나오는부분을 z-index값을 줘서 맨 앞으로 튀어 나오게 해야함 */
+.hidden {
+  height: 320px;
+  background-color: rgb(255, 255, 255);
+  display: none;
+  top: 60px;
+  position: fixed;
+  width: 100vw;
+  padding-top: 5px;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* 상단 숨겨진 검색창*/
+.hidden2 {
+  width: 100vw;
+  height: 320px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  display: none;
+  top: 60px;
+  z-index: 999;
+  padding-top: 5px;
+  justify-content: center;
+}
+
+/* 숨겨진 검색창의 검색바*/
+#search-bar {
+  margin-left: 30%;
+  width: 700px;
+  height: 30px;
+  margin-top: 60px;
+  font-size: 30px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 2px solid black;
+}
+
+/* 숨겨진 검색창의 검색바 호버 시 테두리없앰*/
+#search-bar:focus {
+  outline: none;
+}
+
+/* 숨겨진 카테고리 창 목록들*/
+.topMenu {
+  width: 40%;
+  margin-bottom: 20px;
+  text-align: center;
+  height: 40px;
+  font-size: 16px;
+  margin-left: 29%;
+}
+
+.menu01>li {
+  float: left;
+  width: 20%;
+  line-height: 40px;
+  color: black;
+}
+
+.menu01 span {
+  font-size: 23px;
+  font-weight: bold;
+  font-size: 20px
+}
+
+.dept01 {
+  display: block;
+  padding: 20px 0;
+  padding-bottom: 5px;
+}
+
+#nop {
+  float: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+/* 숨겨진 카테고리 창 바*/
+.bar {
+  width: 100vw;
+  position: absolute;
+  height: 2px;
+  left: 0;
+  background-color: rgb(215, 215, 215);
+}
+
+/* 햄버거 메뉴 에니메이션*/
+.center {
+  position: absolute;
+  top: 30px;
+  /* 상단 정렬 */
+  left: 50%;
+  margin: auto;
+  transform: translateY(-50%);
+}
+
+input[id="menuicon"] {
+  display: none;
+}
+
+input[id="menuicon"]+label {
+  display: block;
+  width: 50px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+}
+
+
+input[id="menuicon"]+label span {
+  display: block;
+  position: absolute;
+  width: 70%;
+  height: 5px;
+  border-radius: 30px;
+  background: #000;
+  transition: all .35s;
+}
+
+
+input[id="menuicon"]+label span:nth-child(1) {
+  top: 0;
+}
+
+input[id="menuicon"]+label span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input[id="menuicon"]+label span:nth-child(3) {
+  bottom: 0;
+}
+
+input[id="menuicon"]:checked+label span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+input[id="menuicon"]:checked+label span:nth-child(2) {
+  opacity: 0;
+}
+
+input[id="menuicon"]:checked+label span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/*페이지 대문 */
+
+/*페이지1 */
+#section1 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+
+  background-color: lightblue;
+}
+
+/*페이지2 */
+#section2 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+
+  background-color: lightgreen;
+}
+
+/*페이지3 */
+#section3 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+
+  background-color: lightpink;
+}
+
+/*페이지4 */
+#section4 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+
+  background-color: rgb(45, 251, 22);
+}
+
+/*페이지5 */
+#section5 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+
+  background-color: rgb(207, 243, 24);
+}
+
+/*페이지6 */
+#section6 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+
+  background-color: rgba(40, 153, 145, 0);
+}
+
+/*페이지7 */
+#section7 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+
+  background-color: rgb(157, 233, 85);
+}
+
+
+
+/* 여기서부터 도형회전 */
+
+.containert {
+  position: relative;
+  top: 20%;
+  left: 33%;
+  /* transform: translate(-50%, -50%) scale(0.8); */
+  width: 200px;
+  height: 200px;
+  transform-origin: center;
+  animation: spin 10s linear infinite;
+  scale: 0.5;
+  opacity: 0.2;
+}
+
+
+.containert1 {
+  position: relative;
+  /* top: 50%; */
+  /* transform: translate(-50%, -50%);  */
+  width: 200px;
+  height: 200px;
+  transform-origin: center;
+  animation: spin 10s linear infinite;
+  scale: 0.1;
+  opacity: 0.2;
+}
+
+.containert2 {
+  position: relative;
+  top: -31%;
+  left: 12%;
+  transform: translate(-50%, -50%) scale(0.8);
+  /* width: 200px; */
+  height: 200px;
+  transform-origin: center;
+  animation: spin 4s linear infinite;
+  scale: 0.2;
+  opacity: 0.2;
+}
+
+.containert3 {
+  position: relative;
+  /* top: 50%; */
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  transform-origin: center;
+  animation: spin 4s linear infinite;
+  scale: 0.1;
+  opacity: 0.2;
+}
+
+.containert4 {
+  position: relative;
+  top: -11%;
+  right: 59%;
+  transform: translate(-50%, -70%);
+  width: 200px;
+  height: 200px;
+  transform-origin: center;
+  animation: spin 4s linear infinite;
+  scale: 0.1;
+  opacity: 0.3;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid red;
+  transform-origin: center bottom;
+}
+
+.triangle-1 {
+  transform: rotate(0deg);
+  border-bottom: 130px solid purple;
+  transform-origin: center bottom;
+  /* animation: rotate1 3s ease infinite; */
+}
+
+.triangle-2 {
+  transform: rotate(60deg);
+  border-bottom: 130px solid purple;
+  transform-origin: center bottom;
+  /* animation: rotate2 3s ease infinite; */
+}
+
+.triangle-3 {
+  transform: rotate(120deg);
+  border-bottom: 130px solid purple;
+  transform-origin: center bottom;
+  /* animation: rotate3 3s ease infinite; */
+}
+
+.triangle-4 {
+  transform: rotate(180deg);
+  border-bottom: 130px solid purple;
+  transform-origin: center bottom;
+  /* animation: rotate4 3s ease infinite; */
+}
+
+.triangle-5 {
+  transform: rotate(240deg);
+  border-bottom: 130px solid purple;
+  transform-origin: center bottom;
+  /* animation: rotate5 3s ease infinite; */
+}
+
+.triangle-6 {
+  transform: rotate(300deg);
+  border-bottom: 130px solid purple;
+  transform-origin: center bottom;
+  /* animation: rotate6 3s ease infinite; */
+}
+
+@keyframes spin {
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate1 {
+  to {
+      transform: rotate(60deg);
+  }
+}
+
+@keyframes rotate2 {
+  to {
+      transform: rotate(120deg);
+  }
+}
+
+@keyframes rotate3 {
+  to {
+      transform: rotate(180deg);
+  }
+}
+
+@keyframes rotate4 {
+  to {
+      transform: rotate(240deg);
+  }
+}
+
+@keyframes rotate5 {
+  to {
+      transform: rotate(300deg);
+  }
+}
+
+@keyframes rotate6 {
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+/* section7 내부 스타일 */
+
+.kbox_container {
+  background-color: white;
+  width: auto;
+  height: 300px;
+  margin: 50px;
+  border: 10px;
+  border-radius: 10px 10px 10px 10px;
+  padding: 0;
+  z-index: 9999;
+  text-align: left;
+  font-size: 0.2em;
+  position: relative;
+  top: 20%;
+  left: -60%;
+  color: black;
+}
+
+#kboxa {
+  float: left;
+  position: absolute;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+#kboxa1 {
+  float: left;
+  position: absolute;
+  top: 60px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+#kboxa2 {
+  float: left;
+  position: absolute;
+  top: 120px;
+  margin: 5px;
+  border-radius: 10px;
+
+}
+
+#kboxa3 {
+  float: left;
+  position: absolute;
+  top: 180px;
+  margin: 5px;
+  border-radius: 10px;
+
+}
+
+#kboxa4 {
+  float: left;
+  position: absolute;
+  top: 240px;
+  margin: 5px;
+  border-radius: 10px;
+
+}
+
+/* 푸터시작 */
+.site-footer {
+  background-color: #e9e9e9;
+}
+
+.site-sub-button {
+  text-decoration: none;
+  color: black;
+}
+
+.site-menu-list-item,
+.site-sub-menu-item {
+  list-style: none;
+}
+
+.site-footer-content-nav {
+  border-bottom: solid 1px rgb(189, 189, 189);
+}
+
+.site-menu-list {
+  float: left;
+}
+
+.footer-btn {
+  --color: #0077ff;
+  font-family: inherit;
+  display: inline-block;
+  height: 2.6em;
+  line-height: 2.5em;
+  overflow: hidden;
+  margin: 20px;
+  font-size: 13px;
+  z-index: 1;
+  color: var(--color);
+  border: 2px solid var(--color);
+  border-radius: 6px;
+  position: relative;
+  text-align: center;
+}
+
+.footer-btn::before {
+  position: absolute;
+  content: "";
+  background: var(--color);
+  width: 150px;
+  height: 200px;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.footer-btn:hover {
+  color: white;
+}
+
+.footer-btn:before {
+  top: 100%;
+  left: 100%;
+  transition: .3s all;
+}
+
+.footer-btn:hover::before {
+  top: -50px;
+  left: -20px;
+}
+
+/* 이게 왜들어가는지 모르겠음 푸터인데?? */
+.header-wrapper {
+  height: auto;
+  min-height: 100%;
+
+}
+
+/* 물어봐야하는것 */
+/* nav와 site-info padding left값 조절해 같은 곳에서 시작되는게 예쁜듯 */
+.site-footer-content-nav {
+  padding-top: 60px;
+  padding-bottom: 130px;
+  padding-left: 300px;
+}
+
+
+.site-footer-content-links {
+  padding-left: 900px;
+  margin-top: 30px;
+}
+
+.footer-btn {
+  margin: 10px;
+}
+
+.site-menu-list-item {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.site-menu-list {
+  margin-left: 40px;
+}
+
+.site-sub-button {
+  font-size: 16px;
+}
+
+.site-sub-menu-item {
+  margin-bottom: 10px;
+}
+
+.site-info {
+  margin-left: 50px;
+  margin-top: 50px;
+  padding-left: 330px;
+  padding-bottom: 80px;
+
+}
+
+.site-info-logo-text {
+  font-size: 95px;
+  display: inline;
+  float: left;
+  margin-right: 30px;
+  margin-top: 0px;
+}
+
+
+.site-info-copyright {
+  font-size: 12px;
+  margin: 0;
+
+}
+
+.site-info-address {
+  margin-bottom: 5px;
+}
+
+
+.site-info-buttons-link {
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}

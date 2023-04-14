@@ -1,0 +1,380 @@
+<!--
+  2023.03.27 ~ 2023.04.04
+  Coding by Sujin Lim 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JKC-Inquiry</title>
+
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <!-- 공통부분 연결 jquery 사용  -->
+  <script>
+    $(document).ready(function () {
+      $(".header").load("jkc_header.html")
+    })
+    $(document).ready(function () {
+      $(".footer").load("jkc_footer.html")
+    })
+    $(document).ready(function () {
+      $(".banner").load("jkc_banner.html")
+    })
+  </script>
+  <!-- 전문보기 팝업 -->
+  <script>
+    //팝업 띄우기
+    function openPop() {
+      document.getElementById("popup_layer").style.display = "block";
+    }
+
+    //팝업 닫기
+    function closePop() {
+      document.getElementById("popup_layer").style.display = "none";
+    }
+  </script>
+  <!-- 첨부파일 업로드 -->
+  <script>
+    const fileInput = document.getElementById("upload");
+    fileInput.onchange = () => {
+      const selectedFile = [...fileInput.files];
+    };
+    fileInput.addEventListener("change", handleFiles);
+  </script>
+
+  <!-- 기본 스타일 지정 -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "NanumSquare", bold;
+      margin: 0 auto;
+    }
+
+    /* 여기 margin-top이 타이틀과 본문과의 마진값 현재 설정 100 */
+    #main-section {
+      margin: 0 auto;
+      width: 800px;
+      margin-top: 100px;
+      z-index: 1;
+    }
+
+    /* padding-bottom: 푸터와 본문과의 간격 현재 200 */
+    #section {
+      height: auto;
+      min-height: 100%;
+      margin-top: 200px;
+      padding-bottom: 200px;
+    }
+
+
+    #section-head {
+      font-size: 30px;
+      padding-left: 300px;
+      border-bottom: rgb(97, 21, 121) solid 2px;
+    }
+
+    .section-head-title {
+      font-size: 60px;
+      font-weight: bold;
+    }
+  </style>
+  <!-- 01 고객 동의 -->
+  <style>
+    .inquiry-info {
+      font-weight: bold;
+      color: rgb(97, 21, 121);
+      margin-bottom: 100px;
+    }
+
+    .inquiry-form-agree-title {
+      font-size: 25px;
+      font-weight: bold;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgb(189, 189, 189);
+    }
+
+    .inquiry-form-agree-content {
+      color: rgb(121, 119, 119);
+    }
+
+    .inquiry-form-agree-check {
+      width: 100%;
+      height: 70px;
+      margin-top: 30px;
+      border: 1px solid rgb(189, 189, 189);
+    }
+
+    .agree-check {
+      width: 30px;
+      height: 30px;
+      display: inline;
+      accent-color: rgb(97, 21, 121);
+    }
+
+    .agree-check-content {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .agree-check-button {
+      border-radius: 5px;
+      background-color: rgb(95, 94, 94);
+      margin-left: 50px;
+      padding: 8px 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 13px;
+    }
+
+    .agree-check-button:hover {
+      color: white;
+    }
+  </style>
+  <!-- 개인정보 수집 팝업-->
+  <style>
+    /*popup*/
+    .popup_layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /*팝업 박스*/
+    .popup_box {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      overflow: auto;
+      height: 519px;
+      width: 500px;
+      transform: translate(-50%, -50%);
+      z-index: 1002;
+      box-sizing: border-box;
+      background: #fff;
+      box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+      -webkit-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+      -moz-box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    }
+
+    /*컨텐츠 영역*/
+    .popup_box .popup_cont {
+      padding: 50px;
+      line-height: 1.4rem;
+      font-size: 14px;
+    }
+
+    .popup_box .popup_cont h2 {
+      padding: 15px 0;
+      color: #333;
+      margin: 0;
+    }
+
+    .popup_box .popup_cont p {
+      border-top: 1px solid #666;
+      padding-top: 30px;
+    }
+
+    /*버튼영역*/
+    .popup_box .popup_btn {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      height: 70px;
+      background: #ECECEC;
+      word-break: break-word;
+    }
+
+    .popup_box .popup_btn a {
+      position: relative;
+      display: table-cell;
+      height: 70px;
+      font-size: 17px;
+      text-align: center;
+      vertical-align: middle;
+      text-decoration: none;
+      background: #ECECEC;
+      color: black;
+    }
+
+
+    /*오버레이 뒷배경*/
+    .popup_overlay {
+      position: fixed;
+      top: 0px;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1001;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /*popup*/
+  </style>
+  <!-- 02 문의 입력 -->
+  <style>
+    .inquiry-content {
+      margin-top: 100px;
+    }
+
+    /* tr에는 margin이 적용되지 않음. 간격 조정하는 border-spacing 써야 함 */
+    .inquiry-table {
+      border-collapse: separate;
+      border-spacing: 10px 30px;
+    }
+
+    .send {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .send-btn {
+      width: 200px;
+      height: 50px;
+      background-color: rgb(97, 21, 121);
+      color: white;
+      border-color: rgb(97, 21, 121);
+      border-radius: 10px;
+    }
+
+    /* input number에서 오른쪽 화살표 없애기 */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="header">
+    </div>
+    <div id="section">
+      <div id="section-wrap">
+        <form>
+          <div id="section-head">Inquiry
+            <p class="section-head-title">1:1 문의</p>
+          </div>
+          <div id="main-section">
+            <div class="inquiry-info">
+              -간단한 문의는 자주묻는질문 게시판의 '문의하기'를 이용바랍니다.<br>
+              -문의 내용이 부적절한 경우 원하는 답변을 받을 수 없거나 처리가 지연될 수 있습니다.
+            </div>
+            <div class="inquiry-form-agree">
+              <div class="inquiry-form-agree-title">
+                01 고객 동의</div>
+              <div class="inquiry-form-agree-content">
+                <br>
+                - 보내주신 문의를 확인 후 최대한 빠르게 답변해 드리겠습니다.<br>
+                - 문의 [제목]과 [내용]란에는 절대 개인정보를 입력하지 마세요.<br>
+                - 문의 [제목]과 [내용]란에 개인정보가 포함되어 있거나, 중복 문의인 경우에는 삭제될 수 있습니다.<br>
+                - 문의에 욕설, 인격침해, 성희롱 등 수치심을 유발하는 표현이 있다면 상담이 중단될 수 있습니다.<br>
+                <div class="inquiry-form-agree-check">
+                  <div class="agree-content">
+                    <table style="margin-top: 20px; margin-left: 30px;">
+                      <tr>
+                        <td><input type="checkbox" class="agree-check"></td>
+                        <td><span class="agree-check-content">&nbsp;&nbsp;&nbsp;개인정보 수집 및 이용 동의</span></td>
+                        <td>
+                          <a class="agree-check-button" href="javascript:openPop()">전문보기</a>
+                        </td>
+                      </tr>
+                    </table>
+                    <div class="popup_layer" id="popup_layer" style="display: none;">
+                      <div class="popup_box">
+                        <div class="popup_cont">
+                          <h5>[개인정보 수집 및 이용 동의]</h5><br>
+                          <p>
+                            JKC는 다음과 같이 개인정보를 수집하고 있습니다.<br><br>
+                            수집 및 이용 목적: 문의 대응, 이용자 식별<br>
+                            항목: 이름, 이메일 주소, 전화번호<br>
+                            보유 및 이용기간: 수집일로부터 3년<br>
+                            (법령에 특별한 규정이 있을 경우 관련 법령에 따라 보관)<br><br>
+                            동의를 거부할 경우 문의를 접수할 수 없습니다.<br><br>
+                            ※그 외의 사항 및 자동 수집 정보와 관련된 사항은 <br>
+                            개인정보처리방침을 따릅니다.<br>
+                          </p>
+                        </div>
+                        <div class="popup_btn">
+                          <a href=javascript:closePop();>확인</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="inquiry-content">
+              <div class=inquiry-form-agree-title>02 문의 입력</div>
+              <div>
+                <table class="inquiry-table">
+                  <tr class="table-tr">
+                    <td>문의 유형</td>
+                    <td><select name="category" style="width: 300px">
+                        <option>선택</option>
+                        <option>단순 문의</option>
+                        <option>협업 문의</option>
+                        <option>방문 접수</option>
+                        <option>기타</option>
+                      </select></td>
+                  </tr>
+                  <tr class="table-tr">
+                    <td>고객명</td>
+                    <td><input type="text" style="width: 300px;" placeholder="고객명 혹은 고객사 입력"></td>
+                  </tr>
+                  <tr class="table-tr">
+                    <td>E-mail</td>
+                    <!-- 이메일 타입도 있었음;;; -->
+                    <td><input type="email" id="email" style="width: 300px;" placeholder=" E-mail 주소 입력">
+                    </td>
+                  </tr>
+                  <tr class="table-tr">
+                    <td>연락처</td>
+                    <td><select id="selbox" name="phone" style="width: 80px; height: 25px;">
+                        <option>010</option>
+                        <option>02</option>
+                      </select> -
+                      <input type="number" style="width: 100px; height: 25px;"> -
+                      <input type="number" style="width: 100px; height: 25px;">
+                    </td>
+                  </tr>
+                  <tr class="table-tr">
+                    <td>문의 내용</td>
+                    <td><textarea style="width:600px; height: 500px; resize: none;"
+                        placeholder="문의 내용을 입력해 주세요."></textarea></td>
+                  </tr>
+                  <tr class="table-tr">
+                    <td>첨부파일</td>
+                    <!-- 첨부파일 업로드 / 여러 첨부파일, 이미지 파일만 보이게...허용은 구현 안함-->
+                    <td><input type="file" id="upload" multiple="multiple" accept="image/*">
+                    </td>
+                  </tr>
+                </table>
+                <div class="send"><button class="send-btn">문의하기</button></div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class=" footer"></div>
+  <div class="banner"></div>
+</body>
+
+</html>

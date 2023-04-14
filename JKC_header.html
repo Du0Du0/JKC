@@ -1,0 +1,368 @@
+<!--
+  2023.03.27 ~ 2023.04.04
+  Coding by Dohyun Kim & Sujin Lim 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <title>JKC-header</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+  <style>
+    /* 전체 */
+
+
+    .h-header-wrap {
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      /* 원래 60이었는데 답답한 감이 있어 70으로 바꿈 */
+      height: 70px;
+      position: fixed;
+      top: 0;
+      display: flex;
+      z-index: 9999;
+      padding-top: 10px;
+    }
+
+    /* 로고 */
+    .h-nav-title {
+      margin-top: 20px;
+      margin-left: 100px;
+      z-index: 9999;
+    }
+
+    .h-logo-img {
+      width: 100px;
+    }
+
+    /* 햄버거 */
+    .h-hamburger {
+      position: absolute;
+      top: 20px;
+      right: 50%;
+    }
+
+
+
+    /* 한영 전환 */
+    .h-lang-select {
+      position: absolute;
+      right: 100px;
+      top: 20px;
+      width: 70px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      border-style: none;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* 검색*/
+    .h-search-icon {
+      position: absolute;
+      right: 50px;
+      top: 13px;
+      width: 40px;
+      height: 40px;
+    }
+
+    /* 히든메뉴 */
+
+    .h-hidden-a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .h-hidden-a:hover {
+      color: rgb(180, 19, 118);
+      font-size: 18px;
+    }
+
+    /* 메뉴가 줄었기 때문에 height 줄임 */
+    .h-hidden-menu {
+      height: 270px;
+      background-color: rgb(255, 255, 255);
+      display: none;
+      top: 60px;
+      position: fixed;
+      width: 100vw;
+      padding-top: 5px;
+      justify-content: center;
+      z-index: 9998;
+    }
+
+    .h-hidden-topMenu {
+      width: 40%;
+      text-align: center;
+      height: 20px;
+      font-size: 16px;
+      margin-left: 29%;
+    }
+
+    .h-hidden-li {
+      float: none;
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+      list-style: none;
+    }
+
+    .h-hidden-sub {
+      float: left;
+      width: 20%;
+      line-height: 40px;
+      color: black;
+      list-style: none;
+    }
+
+    .h-hidden-title {
+      font-size: 23px;
+      font-weight: bold;
+      font-size: 20px
+    }
+
+    .h-hidden-dept {
+      display: block;
+      padding: 20px 0;
+      padding-bottom: 5px;
+    }
+
+    /* 숨겨진 카테고리 창 바*/
+    .h-hidden-bar {
+      width: 100vw;
+      position: absolute;
+      left: 0;
+      height: 2px;
+      background-color: rgb(215, 215, 215);
+    }
+
+    /* 숨겨진 검색창*/
+    .h-hidden-search {
+      width: 100vw;
+      height: 320px;
+      background-color: rgb(255, 255, 255);
+      position: fixed;
+      display: none;
+      top: 60px;
+      z-index: 5;
+      padding-top: 5px;
+      justify-content: center;
+    }
+
+    .h-hidden-search-bar {
+      margin-left: 30%;
+      width: 700px;
+      height: 50px;
+      margin-top: 50px;
+      font-size: 30px;
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      border-bottom: 2px solid black;
+    }
+
+    .h-hidden-search-bar:focus {
+      outline: none;
+    }
+
+    .search-tag {
+      display: inline;
+      margin-left: 30px;
+    }
+
+    .search-tag-wrap {
+      margin-top: 30px;
+      margin-left: 550px;
+    }
+
+    .search-tag-a {
+      text-decoration: underline;
+      color: red;
+    }
+
+
+    /* 햄버거 메뉴 에니메이션*/
+    .h-hamburger-center {
+      position: absolute;
+      top: 30px;
+      /* 상단 정렬 */
+      left: 50%;
+      margin: auto;
+      transform: translateY(-50%);
+    }
+
+    input[id="h-menu"] {
+      display: none;
+    }
+
+    input[id="h-menu"]+label {
+      display: block;
+      width: 50px;
+      height: 30px;
+      position: relative;
+      cursor: pointer;
+    }
+
+
+    input[id="h-menu"]+label span {
+      display: block;
+      position: absolute;
+      width: 70%;
+      height: 5px;
+      border-radius: 30px;
+      background: #000;
+      transition: all .35s;
+    }
+
+
+    input[id="h-menu"]+label span:nth-child(1) {
+      top: 0;
+    }
+
+    input[id="h-menu"]+label span:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    input[id="h-menu"]+label span:nth-child(3) {
+      bottom: 0;
+    }
+
+    input[id="h-menu"]:checked+label span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    input[id="h-menu"]:checked+label span:nth-child(2) {
+      opacity: 0;
+    }
+
+    input[id="h-menu"]:checked+label span:nth-child(3) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+    }
+  </style>
+</head>
+
+
+
+
+<body>
+  <div class="h-header">
+    <div class="h-header-wrap">
+      <div class="h-nav">
+        <!-- 로고 -->
+        <div class="h-nav-title">
+          <!-- 메인메인으로 연결하고싶음 -->
+          <a href="JKC_MainPage.html"><img class="h-logo-img" src="logo.png"></a>
+        </div>
+        <div>
+          <!-- 햄버거 메뉴 -->
+          <div class="h-hamburger">
+            <div class="h-hamburger-center">
+              <input id="h-menu" type="checkbox">
+              <label for="h-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </label>
+            </div>
+          </div>
+          <!-- 언어 선택 -->
+          <div class="h-lang">
+            <select class="h-lang-select">
+              <option selected>KOR</option>
+              <option value="ENG">ENG</option>
+            </select>
+          </div>
+          <!-- 검색 -->
+          <div class="h-search">
+            <img class="h-search-icon" src="검색.png" alt="검색">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 숨겨진 검색창 -->
+    <div class="h-hidden-search">
+      <input class="h-hidden-search-bar" type="text" placeholder="검색어를 입력하세요"><br>
+      <div class="search-tag-wrap">
+        <div class="search-tag"><a class="search-tag-a" href="#">#JKC</a></div>
+        <div class="search-tag"><a class="search-tag-a" href="#">#중요한건</a></div>
+        <div class="search-tag"><a class="search-tag-a" href="#">#꺾이지 않는</a></div>
+        <div class="search-tag"><a class="search-tag-a" href="#">#코딩....</a></div>
+        <br>
+        <div class="search-tag"><a class="search-tag-a" href="#">#화이팅</a></div>
+        <div class="search-tag"><a class="search-tag-a" href="#">#안녕하세요</a></div>
+      </div>
+    </div>
+    <!-- 숨겨진 카테고리창 -->
+    <div class="h-hidden-menu">
+      <div class="h-hidden-topMenu">
+        <ul class="h-hidden-ul">
+          <li class="h-hidden-sub"><span class="h-hidden-title">About Us</span>
+            <div class="h-hidden-bar"></div>
+            <ul class="h-hidden-dept">
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_1_AboutUs.html">회사 개요</a></li>
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_1_AboutUs.html#about-member">멤버</a></li>
+            </ul>
+          </li>
+          <li class="h-hidden-sub"><span class="h-hidden-title">Portfolio</span>
+            <ul class="h-hidden-dept">
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_2_Portfolio.html">포트폴리오</a></li>
+            </ul>
+          </li>
+          <li class="h-hidden-sub"><span class="h-hidden-title">Notice</span>
+            <ul class="h-hidden-dept">
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_3_activity.html">활동 내역</a></li>
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_3_minutes.html">회의록</a></li>
+            </ul>
+          </li>
+          <li class="h-hidden-sub"><span class="h-hidden-title">Q&A</span>
+            <ul class="h-hidden-dept">
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_4_Qna.html">고객센터</a></li>
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_4_inquiry.html">1:1 문의</a></li>
+            </ul>
+          </li>
+          <li class="h-hidden-sub"><span class="h-hidden-title">Contact</span>
+            <ul class="h-hidden-dept">
+              <li class="h-hidden-li"><a class="h-hidden-a" href="JKC_5_Contact.html">오시는 길</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    //숨겨진 메뉴
+    var count = 0;
+    $('#h-menu').on('click', function () {
+      count += 1;
+      if (count % 2 == 1) {
+        $('.h-hidden-menu').slideDown();
+      } else {
+        $('.h-hidden-menu').slideUp();
+      }
+    });
+
+    // 숨겨진 검색창
+    var count = 0;
+
+    $('.h-search-icon').on('click', function () {
+      count += 1;
+      if (count % 2 == 1) {
+        $('.h-hidden-search').slideDown();
+      } else {
+        $('.h-hidden-search').slideUp();
+      }
+    });
+  </script>
+</body>
+
+</html>

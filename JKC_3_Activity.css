@@ -1,0 +1,170 @@
+/* 모든 페이지 공통 */
+body {
+  font-family: "NanumSquare", bold;
+  margin: 0 auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.gdcontainer {
+  /* 중앙 정렬 */
+  /* 컨테이너를 부모로 만듦 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: auto;
+  margin: 100px auto 0;
+  /* 가로로 정렬하다가 넓이를 침범하면 다음 줄에서 정렬됨 좌->우 */
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* 네비게이션 뒤로 와야하기 때문에 z-index를 낮은값을줌 */
+  z-index: 1;
+}
+.newsbox {
+  z-index: 9999;
+  font-size: 30px;
+  padding-left: 300px;
+  border-bottom: rgb(97, 21, 121) solid 2px;
+}
+.newsbox-title {
+  font-size: 60px;
+  font-weight: bold;
+}
+#wrapper {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 100px;
+}
+.news-wrapper {
+  height: auto;
+  min-height: 100%;
+  margin-top: 200px;
+  padding-bottom: 200px;
+}
+
+.flip-box {
+  width: 250px;
+  height: 400px;
+  float: left; /* box의 시작. 좌로정렬 */
+  margin: 60px;
+  /* perspective는 3D를 위한 속성임(원근감 조절해서 맞추기) */
+  perspective: 1000px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* 뒤집히면 나오는 부분 */
+/* 3D효과 사용시 transform-style을 preserve-3d로 지정해야 사용가능 */
+/* 애니메이션 효과를 위해 transform:rotateY(0deg)로 미리 지정 */
+.flip,
+.flip2,
+.flip3,
+.flip4,
+.flip5,
+.flip6,
+.flip7 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  line-height: 400px;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  /* 카드가 뒤집히는 시간 */
+  transition: 1.5s;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* 히든으로 지정해야 뒷면이 안보임 */
+  backface-visibility: hidden;
+  border-radius: 20px 20px 20px 20px;
+  z-index: 5;
+}
+
+.back {
+  background: rgb(38, 111, 221);
+  transform: rotateY(180deg);
+  z-index: 5;
+}
+
+.printBOX {
+  z-index: 9999;
+  font-size: 50px;
+  margin: 200px;
+  opacity: 0.1;
+}
+
+/* 호버시 돌려주기 */
+/* deg는 각도.. */
+.flip-box:hover .flip {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip2 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip3 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip4 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip5 {
+  transform: rotateY(180deg);
+}
+
+.flip-box:hover .flip6 {
+  transform: rotateY(180deg);
+}
+.flip-box:hover .flip7 {
+  transform: rotateY(180deg);
+}
+
+.flip_img {
+  border-radius: 20px 20px 20px 20px;
+  /* flip 박스와 같은 크기로 했더니 이미지가 살짝 잘려서 값을 살짝 더 줌 */
+  width: 300px;
+  height: 400px;
+}
+
+/* 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* li {
+  list-style: none;
+} */
+
+body {
+  font-family: "NanumSquare", bold;
+  margin: 0 auto;
+}
+
+.flip_a {
+  text-decoration: none;
+  color: cornsilk;
+}
+
+#section-head {
+  font-size: 30px;
+  padding-left: 300px;
+  border-bottom: rgb(97, 21, 121) solid 2px;
+}
+
+.section-head-title {
+  font-size: 60px;
+  font-weight: bold;
+}

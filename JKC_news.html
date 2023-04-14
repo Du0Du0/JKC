@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JKC-News</title>
+
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <link href="news.css" rel="stylesheet">
+
+  <!-- 공통 부분 연결 -->
+  <script>
+    $(document).ready(function () {
+      $(".header").load("jkc_header.html")
+    })
+    $(document).ready(function () {
+      $(".footer").load("jkc_footer.html")
+    })
+    $(document).ready(function () {
+      $(".banner").load("jkc_banner.html")
+    })
+  </script>
+</head>
+
+
+<body>
+  <div>
+    <div class="header"></div>
+    <div class="news-wrapper">
+      <div id="section-head">Activity
+        <p class="section-head-title">활동내역</p>
+      </div>
+      <!-- container -->
+      <div class="gdcontainer">
+        <div class="flip-box">
+          <div class="flip">
+            <div class="front"><img src="카드앞면.jpg" width="300px" height="400px" alt="img1"></div>
+            <div class="back"><a class="flip_a" href="newlink.html">Project 1차</a></div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip2">
+            <div class="front" id=""><img class="flip_img" src="카드앞면2.jpg" width="300px" height="400px" alt="img2"></div>
+            <div class="back"><a class="flip_a" href="#">Project 2차</a></div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip3">
+            <div class="front" id=""><img class="flip_img" src="카드앞면3.jpg" width="300px" height="400px" alt="img3"></div>
+            <div class="back"><a class="flip_a" href="#">Project 3차</a></div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip4">
+            <div class="front" id=""><img class="flip_img" src="카드앞면4.jpg" width="300px" height="400px" alt="img4"></div>
+            <div class="back"><a class="flip_a" href="#">Project 4차</a></div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip5">
+            <div class="front" id=""><img class="flip_img" src="카드앞면5.jpg" width="300px" height="400px" alt="img5"></div>
+            <div class="back"><a class="flip_a" href="#">Project 5차</a></div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip6">
+            <div class="front" id=""><img class="flip_img" src="카드앞면6.jpg" width="300px" height="400px" alt="img6"></div>
+            <div class="back"><a class="flip_a" href="#">Project 6차</a></div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip7">
+            <div class="front" id=""><img class="flip_img" src="카드앞면7.jpg" width="300px" height="400px" alt="img7"></div>
+            <div class="back"><a class="flip_a" href="#">Project 7차</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"></div>
+  <div class="banner"></div>
+
+
+</body>
+
+</html>
